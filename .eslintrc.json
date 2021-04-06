@@ -4,7 +4,7 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["plugin:react/recommended", "standard"],
+  "extends": ["plugin:react/recommended", "standard", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -14,14 +14,16 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
-   "settings": {
-     "react": {
-       "createClass": "createReactClass",
-       "version": "detect"
-     }
-   },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "version": "detect"
+    }
+  },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off",
+    "no-use-before-define": "off"
   }
 }
