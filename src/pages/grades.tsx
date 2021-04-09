@@ -10,7 +10,7 @@ import {
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
-import PageLayout from '../components/PageLayout'
+import PageLayout from '../components/Layout/PageLayout'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

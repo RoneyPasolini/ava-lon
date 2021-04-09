@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@material-ui/core'
-import PageLayout from '../components/PageLayout'
-import QuestionGroup from '../components/QuestionGroup'
+import PageLayout from '../components/Layout/PageLayout'
+import QuestionGroup from '../components/Quiz/QuestionGroup'
 
 const questions = [
   {
