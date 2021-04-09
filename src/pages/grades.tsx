@@ -1,16 +1,8 @@
-import {
-  Typography,
-  AccordionSummary,
-  AccordionDetails,
-  Accordion,
-  Paper,
-  Box,
-  Grid
-} from '@material-ui/core'
+import { Typography, Box } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-
+import ModuleGradesAccordion from '../components/Grades/ModuleGradesAccordion'
 import PageLayout from '../components/Layout/PageLayout'
+import Module from '../models/module'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -83,57 +75,8 @@ const grades = [
   }
 ] as Module[]
 
-interface Activity {
-  id: string
-  title: string
-  done: boolean
-  grade: number
-  maxGrade: number
-}
-
-interface Module {
-  id: string
-  title: string
-  activities: Activity[]
-}
-
 export default function Grades() {
   const classes = useStyles()
-
-  function getActivitiesAverageGrade(module: Module) {
-    let totalScore = 0
-    let totalMaxScore = 0
-    for (let i = 0; i < module.activities.length; i++) {
-      totalScore += module.activities[i].grade
-      totalMaxScore += module.activities[i].maxGrade
-    }
-    const average = totalScore / totalMaxScore
-    return average
-  }
-
-  function Grade({ grade, maxGrade }: { grade: number; maxGrade: number }) {
-    const gradePercent = (grade / maxGrade) * 100
-    const color =
-      gradePercent >= 80
-        ? 'success.main'
-        : gradePercent >= 40
-        ? 'warning.main'
-        : 'error.main'
-    const formatedGrade =
-      grade.toString().indexOf('.') !== -1
-        ? (Math.round(grade * 100) / 100).toFixed(2)
-        : grade
-    const formatedMaxGrade =
-      maxGrade.toString().indexOf('.') !== -1
-        ? (Math.round(maxGrade * 100) / 100).toFixed(2)
-        : maxGrade
-    return (
-      <Box
-        component="span"
-        color={color}
-      >{`${formatedGrade} / ${formatedMaxGrade}`}</Box>
-    )
-  }
 
   return (
     <PageLayout>
@@ -143,50 +86,7 @@ export default function Grades() {
 
       <Box className={classes.modulesGroup}>
         {grades.map((module) => (
-          <Accordion key={module.id} className={classes.module}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Grid container spacing={1}>
-                <Grid item xs={6}>
-                  <Typography className={classes.heading}>
-                    {module.title}
-                  </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography className={classes.secondaryHeading}>
-                    <Grade
-                      grade={getActivitiesAverageGrade(module) * 10}
-                      maxGrade={10}
-                    />
-                  </Typography>
-                </Grid>
-              </Grid>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Box>
-                {module.activities.map((activity) => (
-                  <Paper
-                    key={activity.id}
-                    variant="outlined"
-                    className={classes.activityBox}
-                  >
-                    <Typography
-                      variant="h6"
-                      component="span"
-                      className={classes.activitiesGroupText}
-                    >
-                      {activity.title}
-                    </Typography>
-                    <Typography variant="body2" component="span">
-                      <Grade
-                        grade={activity.grade}
-                        maxGrade={activity.maxGrade}
-                      ></Grade>
-                    </Typography>
-                  </Paper>
-                ))}
-              </Box>
-            </AccordionDetails>
-          </Accordion>
+          <ModuleGradesAccordion key={module.id} module={module} />
         ))}
       </Box>
     </PageLayout>

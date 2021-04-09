@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-interface PageLayoutProps {
+interface Props {
   children: any
 }
 
-export default function PageLayout({ children }: PageLayoutProps) {
+export default function PageLayout({ children }: Props) {
   const classes = useStyles()
 
   return (

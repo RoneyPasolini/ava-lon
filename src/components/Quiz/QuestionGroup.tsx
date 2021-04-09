@@ -41,12 +41,12 @@ interface Question {
   answers: Answer[]
 }
 
-interface QuestionGroupProps {
+interface Props {
   index: number
   question: Question
 }
 
-export default function QuestionGroup({ index, question }: QuestionGroupProps) {
+export default function QuestionGroup({ index, question }: Props) {
   const classes = useStyles()
   const [value, setValue] = useState(null)
 
