@@ -4,7 +4,8 @@ import {
   AccordionDetails,
   Accordion,
   Paper,
-  Box
+  Box,
+  Grid
 } from '@material-ui/core'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
@@ -26,7 +27,8 @@ const useStyles = makeStyles((theme: Theme) =>
       flexShrink: 0
     },
     secondaryHeading: {
-      fontSize: theme.typography.pxToRem(18)
+      fontSize: theme.typography.pxToRem(18),
+      textAlign: 'right'
     },
     activitiesGroup: {
       display: 'flex',
@@ -143,15 +145,21 @@ export default function Grades() {
         {grades.map((module) => (
           <Accordion key={module.id} className={classes.module}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className={classes.heading}>
-                {module.title}
-              </Typography>
-              <Typography className={classes.secondaryHeading}>
-                <Grade
-                  grade={getActivitiesAverageGrade(module) * 10}
-                  maxGrade={10}
-                />
-              </Typography>
+              <Grid container spacing={1}>
+                <Grid item xs={6}>
+                  <Typography className={classes.heading}>
+                    {module.title}
+                  </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography className={classes.secondaryHeading}>
+                    <Grade
+                      grade={getActivitiesAverageGrade(module) * 10}
+                      maxGrade={10}
+                    />
+                  </Typography>
+                </Grid>
+              </Grid>
             </AccordionSummary>
             <AccordionDetails>
               <Box>
