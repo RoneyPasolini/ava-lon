@@ -5,32 +5,20 @@ import {
   ListItem,
   ListItemText
 } from '@material-ui/core'
-
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import { useEffect, useState } from 'react'
+
+import { NavMenuContext } from '../../contexts/NavMenuContext'
+import { useContext } from 'react'
 
 interface Props {
   navItems: string[]
-  isOpen: boolean
 }
 
-export default function NavMenu({ navItems, isOpen }: Props) {
-  const [open, setOpen] = useState(isOpen)
-
-  useEffect(() => {
-    console.log('useEffect')
-    console.log(isOpen)
-    setOpen(isOpen)
-  }, [isOpen])
-
-  const closeNavMenu = () => {
-    setOpen(false)
-  }
-
-  console.log(open)
+export default function NavMenu({ navItems }: Props) {
+  const { isOpen, closeNavMenu } = useContext(NavMenuContext)
 
   return (
-    <Drawer variant="persistent" anchor="left" open={open}>
+    <Drawer variant="persistent" anchor="left" open={isOpen}>
       <IconButton onClick={closeNavMenu}>
         <ChevronLeftIcon />
       </IconButton>

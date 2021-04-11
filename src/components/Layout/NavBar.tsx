@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 
 import NavMenu from './NavMenu'
+import { NavMenuContext, NavMenuProvider } from '../../contexts/NavMenuContext'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,14 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export default function NavBar() {
+function TopBar() {
+  const { openNavMenu } = useContext(NavMenuContext)
   const classes = useStyles()
-
-  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false)
-
-  const openNavMenu = () => {
-    setIsNavMenuOpen(!isNavMenuOpen)
-  }
 
   return (
     <div className={classes.root}>
@@ -47,7 +43,15 @@ export default function NavBar() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <NavMenu navItems={['Test']} isOpen={isNavMenuOpen} />
+      <NavMenu navItems={['Test']} />
     </div>
+  )
+}
+
+export default function NavBar() {
+  return (
+    <NavMenuProvider>
+      <TopBar />
+    </NavMenuProvider>
   )
 }
