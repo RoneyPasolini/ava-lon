@@ -1,10 +1,11 @@
-import { Typography } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 import ListAltIcon from '@material-ui/icons/ListAlt'
+
+import Link from 'next/link'
 
 import { NavMenuProvider } from '../../contexts/NavMenuContext'
 import TopBar from '../Layout/TopBar'
 import OpenMenuButton from './OpenMenuButton'
-
 import { NavMenu, NavItem } from './NavMenu'
 
 const navItems = [
@@ -20,9 +21,13 @@ export default function Navigation() {
     <NavMenuProvider>
       <TopBar>
         <OpenMenuButton />
-        <Typography variant="h6" color="inherit">
-          AVA-LON
-        </Typography>
+        <Link href="/">
+          <Button variant="contained" color="primary" disableElevation>
+            <Typography component="a" variant="h6">
+              AVA-LON
+            </Typography>
+          </Button>
+        </Link>
       </TopBar>
       <NavMenu navItems={navItems} />
     </NavMenuProvider>
