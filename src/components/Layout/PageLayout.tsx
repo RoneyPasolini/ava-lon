@@ -1,5 +1,5 @@
 import { Box, Container, makeStyles } from '@material-ui/core'
-import NavBar from './NavBar'
+import Navigation from '../Navigation/Navigation'
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -21,7 +21,7 @@ export default function PageLayout({ children }: Props) {
 
   return (
     <>
-      <NavBar />
+      <Navigation />
       <Container>
         <Box className={classes.content}>{children}</Box>
       </Container>
