@@ -1,9 +1,19 @@
 import { Typography } from '@material-ui/core'
+import ListAltIcon from '@material-ui/icons/ListAlt'
 
 import { NavMenuProvider } from '../../contexts/NavMenuContext'
 import TopBar from '../Layout/TopBar'
-import NavMenu from './NavMenu'
 import OpenMenuButton from './OpenMenuButton'
+
+import { NavMenu, NavItem } from './NavMenu'
+
+const navItems = [
+  {
+    text: 'Grades',
+    url: '/grades',
+    icon: <ListAltIcon />
+  }
+] as NavItem[]
 
 export default function Navigation() {
   return (
@@ -14,7 +24,7 @@ export default function Navigation() {
           AVA-LON
         </Typography>
       </TopBar>
-      <NavMenu navItems={['Test']} />
+      <NavMenu navItems={navItems} />
     </NavMenuProvider>
   )
 }

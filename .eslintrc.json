@@ -25,5 +25,8 @@
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
     "no-use-before-define": "off"
+  },
+  "globals": {
+    "JSX": true
   }
 }

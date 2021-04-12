@@ -6,15 +6,22 @@ import {
   ListItemText
 } from '@material-ui/core'
 
-import { NavMenuContext } from '../../contexts/NavMenuContext'
+import Link from 'next/link'
 import { useContext } from 'react'
+import { NavMenuContext } from '../../contexts/NavMenuContext'
 import CloseMenuButton from './CloseMenuButton'
 
-interface Props {
-  navItems: string[]
+export interface NavItem {
+  text: string
+  icon: JSX.Element
+  url: string
 }
 
-export default function NavMenu({ navItems }: Props) {
+interface Props {
+  navItems: NavItem[]
+}
+
+export function NavMenu({ navItems }: Props) {
   const { isOpen } = useContext(NavMenuContext)
 
   return (
@@ -22,10 +29,13 @@ export default function NavMenu({ navItems }: Props) {
       <CloseMenuButton />
       <Divider />
       <List>
-        {navItems.map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
+        {navItems.map((item) => (
+          <Link href={item.url} key={item.text}>
+            <ListItem button>
+              {item.icon}
+              <ListItemText primary={item.text} />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Drawer>
