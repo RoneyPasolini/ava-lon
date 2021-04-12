@@ -1,27 +1,17 @@
 import {
   Divider,
   Drawer,
-  IconButton,
   List,
   ListItem,
   ListItemText
 } from '@material-ui/core'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
 import { NavMenuContext } from '../../contexts/NavMenuContext'
 import { useContext } from 'react'
+import CloseMenuButton from './CloseMenuButton'
 
 interface Props {
   navItems: string[]
-}
-
-function CloseMenuButton() {
-  const { closeNavMenu } = useContext(NavMenuContext)
-  return (
-    <IconButton onClick={closeNavMenu}>
-      <ChevronLeftIcon />
-    </IconButton>
-  )
 }
 
 export default function NavMenu({ navItems }: Props) {
