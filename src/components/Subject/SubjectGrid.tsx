@@ -19,9 +19,15 @@ export default function SubjectGrid({ subjects }: Props) {
   const classes = useStyles()
 
   return (
-    <Grid container className={classes.root} spacing={2}>
+    <Grid
+      container
+      className={classes.root}
+      spacing={2}
+      justify="center"
+      alignItems="center"
+    >
       {subjects.map((subject) => (
-        <Grid item xs={4} key={subject.id}>
+        <Grid item xs={12} sm={6} md={4} key={subject.id}>
           <SubjectCard subject={subject} />
         </Grid>
       ))}
