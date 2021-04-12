@@ -13,7 +13,7 @@ interface Props {
 export const NavMenuContext = createContext({} as NavMenuContextData)
 
 export const NavMenuProvider = ({ children }: Props) => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   const openNavMenu = () => {
     setIsOpen(true)
