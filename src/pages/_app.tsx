@@ -1,9 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
-import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import theme from '../themes/theme'
+import { ThemeProvider } from '../contexts/ThemeContext'
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props
@@ -25,7 +24,7 @@ export default function MyApp(props: AppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
