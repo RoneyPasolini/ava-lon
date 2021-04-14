@@ -4,8 +4,10 @@ import {
   CssBaseline,
   TextField,
   Typography,
-  makeStyles
+  makeStyles,
+  Box
 } from '@material-ui/core'
+import SwitchTheme from '../components/Layout/SwitchTheme'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -20,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  switchTheme: {
+    position: 'absolute',
+    top: '0',
+    right: '0'
   }
 }))
 
@@ -27,46 +34,51 @@ export default function SignIn() {
   const classes = useStyles()
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h2">
-          AVA-LON
-        </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Endereço de Email"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Senha"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Entrar
-          </Button>
-        </form>
-      </div>
-    </Container>
+    <>
+      <Box className={classes.switchTheme}>
+        <SwitchTheme />
+      </Box>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h2">
+            AVA-LON
+          </Typography>
+          <form className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Endereço de Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Senha"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Entrar
+            </Button>
+          </form>
+        </div>
+      </Container>
+    </>
   )
 }
