@@ -1,6 +1,7 @@
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { AppBar, Toolbar } from '@material-ui/core'
+import { AppBar, Box, Toolbar } from '@material-ui/core'
 import { ReactNode } from 'react'
+import SwitchTheme from './SwitchTheme'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -8,8 +9,8 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       marginBottom: '1rem'
     },
-    menuButton: {
-      marginRight: theme.spacing(2)
+    toolbar: {
+      justifyContent: 'space-between'
     }
   })
 )
@@ -24,7 +25,10 @@ export default function TopBar({ children }: Props) {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar variant="dense">{children}</Toolbar>
+        <Toolbar variant="dense" className={classes.toolbar}>
+          <Box>{children}</Box>
+          <SwitchTheme />
+        </Toolbar>
       </AppBar>
     </div>
   )
