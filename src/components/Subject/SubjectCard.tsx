@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import {
   makeStyles,
   Card,
@@ -29,11 +30,13 @@ export default function SubjectCard({ subject }: Props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={subject.image}
-          title={subject.title}
-        />
+        <Link href={`/?subjectId=${subject.id}`}>
+          <CardMedia
+            className={classes.media}
+            image={subject.image}
+            title={subject.title}
+          />
+        </Link>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {subject.title}
