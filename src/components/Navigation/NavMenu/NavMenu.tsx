@@ -12,8 +12,9 @@ import {
 
 import Link from 'next/link'
 import { useContext } from 'react'
-import { NavMenuContext } from '../../contexts/NavMenuContext'
-import CloseMenuButton from './CloseMenuButton'
+import { NavMenuContext } from '../../../contexts/NavMenuContext'
+import CloseMenuButton from './Buttons/CloseMenuButton'
+import SelectSubject from './Buttons/SelectSubject'
 
 const drawerWidth = 240
 
@@ -42,6 +43,8 @@ export interface NavItem {
 
 interface Props {
   navItems: NavItem[]
+  subjectName?: string
+  subjectId?: string
 }
 
 export function NavMenu({ navItems }: Props) {
@@ -62,6 +65,7 @@ export function NavMenu({ navItems }: Props) {
         <CloseMenuButton />
       </div>
       <Divider />
+      <SelectSubject />
       <List>
         {navItems.map((item) => (
           <Link href={item.url} key={item.text}>

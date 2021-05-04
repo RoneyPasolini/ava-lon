@@ -5,8 +5,8 @@ import Link from 'next/link'
 
 import { NavMenuProvider } from '../../contexts/NavMenuContext'
 import TopBar from '../Layout/TopBar'
-import OpenMenuButton from './OpenMenuButton'
-import { NavMenu, NavItem } from './NavMenu'
+import OpenMenuButton from './NavMenu/Buttons/OpenMenuButton'
+import { NavMenu, NavItem } from './NavMenu/NavMenu'
 
 const navItems = [
   {
