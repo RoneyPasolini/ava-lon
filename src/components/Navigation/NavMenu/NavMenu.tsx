@@ -13,6 +13,7 @@ import {
 import Link from 'next/link'
 import { useContext } from 'react'
 import { NavMenuContext } from '../../../contexts/NavMenuContext'
+import { SubjectContext } from '../../../contexts/SubjectContext'
 import CloseMenuButton from './Buttons/CloseMenuButton'
 import SelectSubject from './Buttons/SelectSubject'
 
@@ -49,6 +50,8 @@ interface Props {
 
 export function NavMenu({ navItems }: Props) {
   const { isOpen } = useContext(NavMenuContext)
+  const { currentSubject } = useContext(SubjectContext)
+
   const classes = useStyles()
 
   return (
@@ -67,14 +70,15 @@ export function NavMenu({ navItems }: Props) {
       <Divider />
       <SelectSubject />
       <List>
-        {navItems.map((item) => (
-          <Link href={item.url} key={item.text}>
-            <ListItem button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          </Link>
-        ))}
+        {currentSubject &&
+          navItems.map((item) => (
+            <Link href={item.url} key={item.text}>
+              <ListItem button>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            </Link>
+          ))}
       </List>
     </Drawer>
   )

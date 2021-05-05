@@ -10,7 +10,7 @@ import { NavMenu, NavItem } from './NavMenu/NavMenu'
 
 const navItems = [
   {
-    text: 'Grades',
+    text: 'Notas',
     url: '/grades',
     icon: <ListAltIcon />
   }
