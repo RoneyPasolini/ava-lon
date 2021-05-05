@@ -2,20 +2,25 @@ import SubjectGrid from '../components/Subject/SubjectGrid'
 import PageLayout from '../components/Layout/PageLayout'
 import Subject from '../models/subject'
 import { useRouter } from 'next/router'
-import SubjectsService from '../services/SubjectsService'
+import { SubjectContext } from '../contexts/SubjectContext'
+import { useContext } from 'react'
 
 export default function Home() {
+  const { currentSubject, selectSubject, getAllSubjects } = useContext(
+    SubjectContext
+  )
+
   const router = useRouter()
   const { subjectId } = router.query
 
-  const subjectsService = new SubjectsService()
-  const subject = subjectsService.findById(subjectId)
+  selectSubject(subjectId as string)
 
   function AllSubjects() {
+    const allSubjects = getAllSubjects()
     return (
       <>
         <h1>Matérias</h1>
-        <SubjectGrid subjects={subjectsService.findAll()} />
+        <SubjectGrid subjects={allSubjects} />
       </>
     )
   }
@@ -30,7 +35,7 @@ export default function Home() {
 
   return (
     <PageLayout>
-      {subject ? <Subject {...subject} /> : <AllSubjects />}
+      {currentSubject ? <Subject {...currentSubject} /> : <AllSubjects />}
     </PageLayout>
   )
 }
