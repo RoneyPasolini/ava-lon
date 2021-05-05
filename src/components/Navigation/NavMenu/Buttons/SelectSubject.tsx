@@ -30,10 +30,11 @@ export default function SelectSubject() {
   return (
     <div>
       <FormControl className={classes.fullWidth}>
-        <InputLabel htmlFor="grouped-native-select">Matéria</InputLabel>
+        <InputLabel htmlFor="select-subject">Matéria</InputLabel>
         <Select
+          id="select-subject"
           native
-          defaultValue={currentSubject || ''}
+          value={currentSubject?.id || ''}
           onChange={(event) => changeSubject(event)}
         >
           <option aria-label="None" value="" disabled />
