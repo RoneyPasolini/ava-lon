@@ -7,6 +7,7 @@ import {
   makeStyles,
   Box
 } from '@material-ui/core'
+import Link from 'next/link'
 import SwitchTheme from '../components/Layout/SwitchTheme'
 
 const useStyles = makeStyles((theme) => ({
@@ -67,15 +68,17 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Entrar
-            </Button>
+            <Link href="/">
+              <Button
+                // type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Entrar
+              </Button>
+            </Link>
           </form>
         </div>
       </Container>
