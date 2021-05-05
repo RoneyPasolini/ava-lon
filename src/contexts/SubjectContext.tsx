@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 import Subject from '../models/subject'
 import SubjectsService from '../services/SubjectsService'
 
@@ -27,6 +27,10 @@ export const SubjectProvider = ({ children }: Props) => {
   const getAllSubjects = () => {
     return subjectsService.findAll()
   }
+
+  useEffect(() => {
+    console.log('current subject:', currentSubject)
+  }, [currentSubject])
 
   return (
     <SubjectContext.Provider

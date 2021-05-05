@@ -1,5 +1,4 @@
-import React from 'react'
-import Link from 'next/link'
+import React, { useContext } from 'react'
 import {
   makeStyles,
   Card,
@@ -10,6 +9,7 @@ import {
 } from '@material-ui/core'
 
 import Subject from '../../models/subject'
+import { SubjectContext } from '../../contexts/SubjectContext'
 
 const useStyles = makeStyles({
   root: {
@@ -26,17 +26,17 @@ interface Props {
 
 export default function SubjectCard({ subject }: Props) {
   const classes = useStyles()
+  const { selectSubject } = useContext(SubjectContext)
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <Link href={`/?subjectId=${subject.id}`}>
-          <CardMedia
-            className={classes.media}
-            image={subject.image}
-            title={subject.title}
-          />
-        </Link>
+        <CardMedia
+          className={classes.media}
+          image={subject.image}
+          title={subject.title}
+          onClick={() => selectSubject(subject.id)}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {subject.title}
