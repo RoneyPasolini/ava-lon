@@ -1,5 +1,8 @@
 import { Button, Typography } from '@material-ui/core'
-import ListAltIcon from '@material-ui/icons/ListAlt'
+import AssignmentIcon from '@material-ui/icons/Assignment'
+import BarChartIcon from '@material-ui/icons/BarChart'
+import HomeIcon from '@material-ui/icons/Home'
+import MenuBookIcon from '@material-ui/icons/MenuBook'
 
 import Link from 'next/link'
 
@@ -10,9 +13,24 @@ import { NavMenu, NavItem } from './NavMenu/NavMenu'
 
 const navItems = [
   {
+    text: 'Início',
+    url: '/',
+    icon: <HomeIcon />
+  },
+  {
+    text: 'Conteúdo',
+    url: '/content',
+    icon: <MenuBookIcon />
+  },
+  {
     text: 'Notas',
     url: '/grades',
-    icon: <ListAltIcon />
+    icon: <BarChartIcon />
+  },
+  {
+    text: 'Atividades',
+    url: '/quiz', // Temporary
+    icon: <AssignmentIcon />
   }
 ] as NavItem[]
 
