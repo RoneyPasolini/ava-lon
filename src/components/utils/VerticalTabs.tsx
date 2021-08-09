@@ -41,12 +41,15 @@ function a11yProps(index: any) {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    height: 224
+    height: '100%'
   },
   tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`
+    maxHeight: '90vh'
+  },
+  tabsDivider: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+    height: '100%'
   }
 }))
 
@@ -69,18 +72,19 @@ export default function VerticalTabs({ tabs }: Props) {
 
   return (
     <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        {tabs.map((tab, index) => (
-          <Tab key={index} label={tab.title} {...a11yProps(index)} />
-        ))}
-      </Tabs>
+      <div className={classes.tabsDivider}>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          className={classes.tabs}
+        >
+          {tabs.map((tab, index) => (
+            <Tab key={index} label={tab.title} {...a11yProps(index)} />
+          ))}
+        </Tabs>
+      </div>
       {tabs.map((tab, index) => (
         <TabPanel key={index} value={value} index={index}>
           {tab.content}

@@ -22,7 +22,7 @@ export default function PageLayout({ children }: Props) {
   return (
     <>
       <Navigation />
-      <Container component="main">
+      <Container component="main" style={{ height: '200vh' }}>
         <Box className={classes.content}>{children}</Box>
       </Container>
     </>
