@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
-
+import { v4 as uuidv4 } from "uuid";
 @Entity("users")
-class User {
+export class User {
   @PrimaryColumn()
   readonly id: string;
 
@@ -19,6 +19,19 @@ class User {
 
   @Column()
   isAdmin: boolean;
-}
 
-export { User };
+  constructor(
+    email: string,
+    name: string,
+    password: string,
+    isTeacher = false,
+    isAdmin = false
+  ) {
+    this.email = email;
+    this.name = name;
+    this.password = password;
+    this.isTeacher = isTeacher;
+    this.isAdmin = isAdmin;
+    this.id = uuidv4();
+  }
+}
