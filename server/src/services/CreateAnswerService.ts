@@ -13,9 +13,9 @@ class CreateAnswerService {
     const answersRepository = await getRepository(Answer);
 
     const answer = await answersRepository.create({
+      question,
       text,
       isCorrect,
-      question: question,
     });
 
     await answersRepository.save(answer);

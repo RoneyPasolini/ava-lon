@@ -12,7 +12,7 @@ export class CreateAnswers1629328320873 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: "question",
+            name: "question_id",
             type: "uuid",
           },
           {
@@ -29,7 +29,7 @@ export class CreateAnswers1629328320873 implements MigrationInterface {
             name: "FKAnswerQuestion",
             referencedTableName: "questions",
             referencedColumnNames: ["id"],
-            columnNames: ["question"],
+            columnNames: ["question_id"],
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },
