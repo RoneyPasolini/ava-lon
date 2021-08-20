@@ -5,7 +5,7 @@ import { Answer } from "./Answer";
 @Entity("questions")
 export class Question {
   @PrimaryColumn()
-  readonly id: string;
+  readonly id?: string;
 
   @Column()
   text!: string;
