@@ -18,7 +18,6 @@ export class CreateQuestions1629328299427 implements MigrationInterface {
           {
             name: "answers",
             type: "uuid",
-            isArray: true,
             isNullable: true,
           },
         ],
@@ -28,8 +27,8 @@ export class CreateQuestions1629328299427 implements MigrationInterface {
             referencedTableName: "answers",
             referencedColumnNames: ["id"],
             columnNames: ["answers"],
-            onDelete: "SET NULL",
-            onUpdate: "SET NULL",
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
           },
         ],
       })
