@@ -1,4 +1,5 @@
 import { Column, Entity, OneToOne, PrimaryColumn } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 import { Activity } from "./Activity";
 import { User } from "./User";
 
@@ -18,4 +19,10 @@ export class Grade {
 
   @OneToOne(() => User)
   student!: User;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidv4();
+    }
+  }
 }

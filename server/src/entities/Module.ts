@@ -1,4 +1,5 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 import { Activity } from "./Activity";
 import { Subject } from "./Subject";
 
@@ -18,4 +19,10 @@ export class Module {
 
   // @OneToMany
   // content
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidv4();
+    }
+  }
 }

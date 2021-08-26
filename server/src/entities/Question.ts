@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { Answer } from "./Answer";
 
@@ -14,6 +14,8 @@ export class Question {
   answers!: Answer[];
 
   constructor() {
-    this.id = uuidv4();
+    if (!this.id) {
+      this.id = uuidv4();
+    }
   }
 }

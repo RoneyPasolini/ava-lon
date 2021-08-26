@@ -4,22 +4,22 @@ import { Subject } from "./Subject";
 @Entity("users")
 export class User {
   @PrimaryColumn()
-  readonly id: string;
+  readonly id?: string;
 
   @Column()
-  email: string;
+  email!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  password: string;
+  password!: string;
 
   @Column()
-  isTeacher: boolean;
+  isTeacher!: boolean;
 
   @Column()
-  isAdmin: boolean;
+  isAdmin!: boolean;
 
   @OneToMany(() => Subject, (subject) => subject.teacher)
   subjectsTeached!: Subject[];
@@ -27,18 +27,9 @@ export class User {
   @ManyToMany(() => Subject, (subject) => subject.students)
   subjectsStudied!: Subject[];
 
-  constructor(
-    email: string,
-    name: string,
-    password: string,
-    isTeacher = false,
-    isAdmin = false
-  ) {
-    this.email = email;
-    this.name = name;
-    this.password = password;
-    this.isTeacher = isTeacher;
-    this.isAdmin = isAdmin;
-    this.id = uuidv4();
+  constructor() {
+    if (!this.id) {
+      this.id = uuidv4();
+    }
   }
 }
