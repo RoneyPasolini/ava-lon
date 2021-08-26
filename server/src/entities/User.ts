@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToMany, OneToMany, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
+import { Subject } from "./Subject";
 @Entity("users")
 export class User {
   @PrimaryColumn()
@@ -19,6 +20,12 @@ export class User {
 
   @Column()
   isAdmin: boolean;
+
+  @OneToMany(() => Subject, (subject) => subject.teacher)
+  subjectsTeached!: Subject[];
+
+  @ManyToMany(() => Subject, (subject) => subject.students)
+  subjectsStudied!: Subject[];
 
   constructor(
     email: string,
