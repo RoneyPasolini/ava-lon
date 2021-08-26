@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { GetAnswersService } from "../services/GetAnswersService";
 import { GetQuestionService } from "../services/GetQuestionService";
 
 class GetQuestionController {
@@ -13,7 +14,13 @@ class GetQuestionController {
 
     const question = await getQuestionService.execute(id);
 
-    return res.status(200).json(question);
+    if (!question) {
+      return res.status(400).send();
+    }
+
+    const answers = await new GetAnswersService().execute(id);
+
+    return res.status(200).json({ question, answers });
   }
 }
 
