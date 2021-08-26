@@ -16,7 +16,7 @@ export class CreateSubjects1629931261360 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "teacher",
+            name: "teacher_id",
             type: "uuid",
             isNullable: true,
           },
@@ -36,7 +36,7 @@ export class CreateSubjects1629931261360 implements MigrationInterface {
             name: "FKSubjectTeacher",
             referencedTableName: "users",
             referencedColumnNames: ["id"],
-            columnNames: ["teacher"],
+            columnNames: ["teacher_id"],
             onDelete: "SET NULL",
             onUpdate: "SET NULL",
           },
