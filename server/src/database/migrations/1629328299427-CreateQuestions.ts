@@ -27,8 +27,8 @@ export class CreateQuestions1629328299427 implements MigrationInterface {
             referencedTableName: "answers",
             referencedColumnNames: ["id"],
             columnNames: ["answers"],
-            onDelete: "CASCADE",
-            onUpdate: "CASCADE",
+            onDelete: "SET NULL",
+            onUpdate: "SET NULL",
           },
         ],
       })

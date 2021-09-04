@@ -16,7 +16,7 @@ export class CreateModules1629846391068 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "subject",
+            name: "subject_id",
             type: "uuid",
           },
           {
@@ -30,7 +30,7 @@ export class CreateModules1629846391068 implements MigrationInterface {
             name: "FKModuleSubject",
             referencedTableName: "subjects",
             referencedColumnNames: ["id"],
-            columnNames: ["subject"],
+            columnNames: ["subject_id"],
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },

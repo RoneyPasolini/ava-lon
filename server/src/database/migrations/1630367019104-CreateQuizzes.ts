@@ -12,12 +12,13 @@ export class CreateQuizzes1630367019104 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: "activity",
+            name: "activity_id",
             type: "uuid",
           },
           {
             name: "questions",
             type: "uuid",
+            isNullable: true,
           },
         ],
         foreignKeys: [
@@ -25,7 +26,7 @@ export class CreateQuizzes1630367019104 implements MigrationInterface {
             name: "FKQuizActivity",
             referencedTableName: "activities",
             referencedColumnNames: ["id"],
-            columnNames: ["activity"],
+            columnNames: ["activity_id"],
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },

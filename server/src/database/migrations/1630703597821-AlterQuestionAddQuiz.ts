@@ -10,7 +10,7 @@ export class AlterQuestionAddQuiz1630703597821 implements MigrationInterface {
     await queryRunner.addColumn(
       "questions",
       new TableColumn({
-        name: "quiz",
+        name: "quiz_id",
         type: "uuid",
         isNullable: true,
       })
@@ -22,7 +22,7 @@ export class AlterQuestionAddQuiz1630703597821 implements MigrationInterface {
         name: "FKQuestionQuiz",
         referencedTableName: "quizzes",
         referencedColumnNames: ["id"],
-        columnNames: ["quiz"],
+        columnNames: ["quiz_id"],
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       })
