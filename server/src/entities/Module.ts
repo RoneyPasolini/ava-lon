@@ -1,4 +1,11 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { Activity } from "./Activity";
 import { Subject } from "./Subject";
@@ -11,8 +18,12 @@ export class Module {
   @Column()
   title!: string;
 
+  @Column()
+  subject_id!: string;
+
+  @JoinColumn({ name: "subject_id" })
   @ManyToOne(() => Subject)
-  subject!: Subject;
+  subject?: Subject;
 
   @OneToMany(() => Activity, (activity) => activity.module)
   activities!: Activity[];

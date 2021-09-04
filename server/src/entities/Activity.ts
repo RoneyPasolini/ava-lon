@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToOne,
   PrimaryColumn,
@@ -18,9 +19,17 @@ export class Activity {
   @Column()
   title!: string;
 
+  @Column()
+  grade_id!: string;
+
+  @JoinColumn({ name: "grade_id" })
   @OneToOne(() => Grade)
   grade!: Grade;
 
+  @Column()
+  module_id!: string;
+
+  @JoinColumn({ name: "module_id" })
   @ManyToOne(() => Module)
   module!: Module;
 

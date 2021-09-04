@@ -16,8 +16,12 @@ export class Quiz {
   @PrimaryColumn()
   readonly id?: string;
 
+  @Column()
+  activity_id!: string;
+
+  @JoinColumn({ name: "activity_id" })
   @OneToOne(() => Activity)
-  activity!: Activity;
+  activity?: Activity;
 
   @OneToMany(() => Question, (question) => question.quiz)
   questions!: Question[];

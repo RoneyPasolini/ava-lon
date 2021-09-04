@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { Activity } from "./Activity";
 import { User } from "./User";
@@ -14,11 +14,19 @@ export class Grade {
   @Column()
   value_earned!: number;
 
-  @OneToOne(() => Activity)
-  actitivy!: Activity;
+  @Column()
+  activity_id!: string;
 
+  @JoinColumn({ name: "activity_id" })
+  @OneToOne(() => Activity)
+  actitivy?: Activity;
+
+  @Column()
+  student_id!: string;
+
+  @JoinColumn({ name: "student_id" })
   @OneToOne(() => User)
-  student!: User;
+  student?: User;
 
   constructor() {
     if (!this.id) {
