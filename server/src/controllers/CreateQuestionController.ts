@@ -4,14 +4,14 @@ import { CreateQuestionService } from "../services/CreateQuestionService";
 
 class CreateQuestionController {
   async handle(req: Request, res: Response) {
-    const { text, answers } = req.body;
+    const { text, answers, quiz_id } = req.body;
 
-    if (!text) {
+    if (!text || !quiz_id) {
       return res.status(400).send();
     }
 
     const createQuestionService = new CreateQuestionService();
-    const question = await createQuestionService.execute({ text });
+    const question = await createQuestionService.execute({ text, quiz_id });
     if (!question || !question.id) {
       return res.status(500).send();
     }
