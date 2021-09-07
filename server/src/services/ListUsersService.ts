@@ -5,16 +5,8 @@ class ListUsersService {
   async execute() {
     const usersRepository = getRepository(User);
 
-    const users = await (
-      await usersRepository.find()
-    ).map((user) => {
-      const { name, email, isAdmin, isTeacher } = user;
-      return {
-        name,
-        email,
-        isAdmin,
-        isTeacher,
-      };
+    const users = await usersRepository.find({
+      select: ["id", "email", "name", "isTeacher", "isAdmin"],
     });
 
     return users;
