@@ -3,6 +3,7 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import ModuleGradesAccordion from '../components/Grades/ModuleGradesAccordion'
 import PageLayout from '../components/Layout/PageLayout'
 import Module from '../models/module'
+import { GradeService} from '../services/GradeService'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,42 +39,8 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   })
 )
-
-const grades = [
-  {
-    id: 'M1',
-    title: 'Module 1',
-    activities: [
-      {
-        id: '1',
-        title: 'Test 1',
-        done: true,
-        grade: 2,
-        maxGrade: 10
-      }
-    ]
-  },
-  {
-    id: 'M2',
-    title: 'Module 2',
-    activities: [
-      {
-        id: '2',
-        title: 'Test 1',
-        done: false,
-        grade: 10,
-        maxGrade: 10
-      },
-      {
-        id: '3',
-        title: 'Test 2',
-        done: false,
-        grade: 3.3333333,
-        maxGrade: 10
-      }
-    ]
-  }
-] as Module[]
+const gradeServise = new GradeService()
+const grades = gradeServise.getStudantGrades() as Module[]
 
 export default function Grades() {
   const classes = useStyles()
